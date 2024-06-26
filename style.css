@@ -1,0 +1,44 @@
+* {
+    padding: 0%;
+    margin: 0%;
+
+}
+
+h1 {
+    font-family: "Roboto Slab", serif;
+}
+
+h1.title {
+    font-size: 50px;
+    text-shadow: 2px 2px 8px orangered;
+}
+
+body {
+    background-image: url('./images/bg.jpg');
+    background-size: cover;
+    color: white;
+}
+
+.curved-box {
+
+    border-radius: 20px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.314);
+}
+
+.searchbar {
+    border-radius: 20px;
+    width: 100%;
+}
+
+#input.form-control {
+    border-radius: 15px;
+}
+
+.btn {
+    border-radius: 15px;
+}
+
+.btn:hover {
+    background-color: orange;
+}
