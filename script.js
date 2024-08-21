@@ -8,6 +8,8 @@ const search = async () => {
             city.innerHTML = item.name + ','
             description.innerHTML = (item.weather[0].description).toUpperCase()
 
+            let main_weather = item.weather[0].main //for changing bg
+
             const iconCode = item.weather[0].icon;
             const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
             icon.src = iconUrl;
@@ -20,6 +22,7 @@ const search = async () => {
             humidity.innerHTML = item.main.humidity + ' %'
             windspeed.innerHTML = item.wind.speed + ' km/h'
             country.innerHTML = item.sys.country
+
             const now = new Date()
             const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
             const day = days[now.getDay()];
@@ -33,6 +36,39 @@ const search = async () => {
             current_time.innerHTML = `${hours}:${minutes} ${ampm}`;
             current_day.innerHTML = day;
             current_date.innerHTML = `${month} ${date}, ${year}`;
+
+            // function call for changing background
+            changeBackground(main_weather)
         })
 }
 
+const changeBackground = (main_weather) => {
+    let videoUrl;
+    switch (main_weather.toLowerCase()) {
+        case "rain":
+            videoUrl = "./images/rainy.mp4";
+            break;
+        case "clouds":
+            videoUrl = "./images/cloudy.mp4";
+            break;
+        case "clear":
+            videoUrl = "./images/clear.mp4";
+            break;
+        case "mist":
+            videoUrl = "./images/misty.mp4";
+            break;
+        case "snow":
+            videoUrl = "./images/snow.mp4";
+            break;
+        case "drizzle":
+            videoUrl = "./images/drizzle.mp4";
+            break;
+        case "haze":
+            videoUrl = "./images/haze.mp4";
+            break;
+        default:
+            videoUrl = "./images/clear.mp4";
+    }
+    const videoElement = document.getElementById("bg-video");
+    videoElement.src = videoUrl;
+}
